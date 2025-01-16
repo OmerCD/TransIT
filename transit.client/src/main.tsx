@@ -14,9 +14,10 @@ createRoot(document.getElementById('root')).render(
                 <Routes>
                     <Route path={`/login`} element={<Login/>}/>
                     <Route element={<App/>}>
-                        <Route path={`/`} element={
-                            <Home/>
-                        }/>
+                        <Route path={`/`} element={<Home/>}/>
+                        <Route path={`/about`} element={<div>About</div>}/>
+                        <Route path={`/logout`} element={<div>Logout</div>}/>
+                        <Route path={`/account`} element={<div>Account</div>}/>
                     </Route>
                 </Routes>
             </AuthProvider>
