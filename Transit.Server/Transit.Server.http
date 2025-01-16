@@ -1,0 +1,6 @@
+@Transit.Server_HostAddress = http://localhost:5157
+
+GET {{Transit.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
