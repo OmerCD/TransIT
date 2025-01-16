@@ -1,14 +1,13 @@
-import {ReactNode, useEffect, useState} from 'react';
 import './App.css';
 import {useAuth} from "./context/AuthProvider";
 import {Navigate, Outlet} from "react-router-dom";
 
-function App({children}: { children: ReactNode }) {
+function App() {
     const auth = useAuth();
     if (auth.token === '') {
         return <Navigate to={'/login'}/>
     }
-    return children;
+    return <Outlet/>;
 }
 
 export default App;
