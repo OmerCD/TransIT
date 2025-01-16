@@ -4,7 +4,11 @@
     align-items: center;
     justify-content: center;
     color: var(--text-color);
-    height: 80%;
+    height: 100%;
+    background-image: url("/logo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .login-container h1 {
