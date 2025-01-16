@@ -34,8 +34,7 @@ if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
     }
 }
 
-const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
-    env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7116';
+const target = `http://192.168.0.46:5157`;
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -52,10 +51,8 @@ export default defineConfig({
                 secure: false
             }
         },
+        host: '0.0.0.0',
         port: 53462,
-        https: {
-            key: fs.readFileSync(keyFilePath),
-            cert: fs.readFileSync(certFilePath),
-        }
+        https: false
     }
 })

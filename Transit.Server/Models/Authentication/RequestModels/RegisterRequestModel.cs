@@ -1,5 +1,8 @@
-﻿namespace Transit.Server.Models.Authentication.RequestModels;
+﻿using TypeGen.Core.TypeAnnotations;
 
+namespace Transit.Server.Models.Authentication.RequestModels;
+
+[ExportTsInterface]
 public class RegisterRequestModel
 {
     public required string Email { get; set; }

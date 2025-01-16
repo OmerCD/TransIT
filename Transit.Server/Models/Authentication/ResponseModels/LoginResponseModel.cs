@@ -1,5 +1,8 @@
-﻿namespace Transit.Server.Models.Authentication.ResponseModels;
+﻿using TypeGen.Core.TypeAnnotations;
 
+namespace Transit.Server.Models.Authentication.ResponseModels;
+
+[ExportTsInterface]
 public class LoginResponseModel
 {
     public required string Token { get; set; }

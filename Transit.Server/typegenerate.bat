@@ -1,0 +1,1 @@
+dotnet-typegen generate --output-folder "..\transit.client\src\models\\"
