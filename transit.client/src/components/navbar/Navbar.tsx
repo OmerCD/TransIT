@@ -1,15 +1,20 @@
 import './Navbar.css';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
 import {useAuth} from "../../context/AuthProvider";
+import {useEffect} from "react";
 
 const Navbar = () => {
     const auth = useAuth();
+    const location = useLocation();
+    useEffect(() => {
+        console.log(location);
+    },[location]);
     return (
         <nav className={`navbar`}>
             <div className={`navbar-left`}>
-                <Link to={`/`}>Transit</Link>
+                <Link className={`navbar-home ${location.pathname === `/` ? `active` : ``}`} to={`/`}>Transit</Link>
             </div>
             <div className={`navbar-center`}>
                 <ul className={`nav-links`}>
