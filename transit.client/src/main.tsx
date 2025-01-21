@@ -7,6 +7,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Login} from "./pages/authentication/Login";
 import {Home} from "./pages/home/Home";
 import {Register} from "./pages/authentication/Register";
+import {Account} from "./pages/account/Account";
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
@@ -19,7 +20,7 @@ createRoot(document.getElementById('root')).render(
                         <Route path={`/`} element={<Home/>}/>
                         <Route path={`/about`} element={<div>About</div>}/>
                         <Route path={`/logout`} element={<div>Logout</div>}/>
-                        <Route path={`/account`} element={<div>Account</div>}/>
+                        <Route path={`/account`} element={<Account/>}/>
                     </Route>
                 </Routes>
             </AuthProvider>

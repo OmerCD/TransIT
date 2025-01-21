@@ -68,7 +68,9 @@ public class LoginEndpoint : Ep.Req<LoginRequestModel>.Res<LoginResponseModel>.M
             Expires = token.ValidTo,
             RefreshToken = refreshToken,
             Username = userEntity.UserName,
-            Email = userEntity.Email
+            Email = userEntity.Email,
+            FirstName = userEntity.FirstName,
+            LastName = userEntity.LastName
         };
     }
     

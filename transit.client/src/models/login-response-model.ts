@@ -9,4 +9,6 @@ export interface LoginResponseModel {
     expires: Date;
     username: string;
     email: string;
+    firstName: string;
+    lastName: string;
 }
