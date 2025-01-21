@@ -30,13 +30,13 @@ public class RegisterEndpoint : Ep.Req<RegisterRequestModel>.Res<RegisterRespons
     {
         var user = Map.ToEntity(req);
         var result = await _userManager.CreateAsync(user, req.Password);
-        var userRole = await _roleManager.Roles.SingleAsync(x=>x.Name == UserRoles.User, cancellationToken: ct);
-        await _userManager.AddToRoleAsync(user, userRole.Name);
         if (!result.Succeeded)
         {
-            AddError(r => r.Username, result.Errors.First().Description);
+            ThrowError(r => r.Username, result.Errors.First().Description);
         }
-        ThrowIfAnyErrors();
+        
+        var userRole = await _roleManager.Roles.SingleAsync(x=>x.Name == UserRoles.User, cancellationToken: ct);
+        await _userManager.AddToRoleAsync(user, userRole.Name);
         
         return Map.FromEntity(user);
     }

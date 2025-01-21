@@ -1,6 +1,6 @@
 import {createContext, ReactNode, useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useAuthService} from "../services/ApiService";
+import {useAuthService} from "../services/AuthService";
 
 export type LoginType = {
     email: string;
@@ -11,14 +11,14 @@ export type LoginType = {
 interface ProviderProps {
     user: string | null;
     token: string,
-    login: (data: LoginType) => void;
+    login: (data: LoginType) => Promise<void>;
     logout: () => void;
 }
 
 const AuthContext = createContext<ProviderProps>({
     user: null,
     token: '',
-    login: () => {
+    login: async () => {
     },
     logout: () => {
     }
@@ -39,15 +39,14 @@ const AuthProvider = ({children}: { children: ReactNode }) => {
     const [token, setToken] = useState<string>(storedInfo?.token || '');
     const navigate = useNavigate();
 
-    const login = (data: LoginType) => {
+    const login = async (data: LoginType) => {
         const authService = useAuthService()
-        authService.login(data.email, data.password).then((response) => {
-            const obj = {...data, token: response.token};
-            setUser(data.email);
-            setToken(response.token);
-            localStorage.setItem('user', JSON.stringify(obj));
-            navigate('/');
-        });
+        const response = await authService.login(data.email, data.password);
+        const obj = {...data, token: response.token};
+        setUser(data.email);
+        setToken(response.token);
+        localStorage.setItem('user', JSON.stringify(obj));
+        navigate('/');
     }
 
     const logout = () => {

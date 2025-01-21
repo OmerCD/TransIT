@@ -6,6 +6,7 @@ import AuthProvider from "./context/AuthProvider";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Login} from "./pages/authentication/Login";
 import {Home} from "./pages/home/Home";
+import {Register} from "./pages/authentication/Register";
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById('root')).render(
             <AuthProvider>
                 <Routes>
                     <Route path={`/login`} element={<Login/>}/>
+                    <Route path={`/register`} element={<Register/>}/>
                     <Route element={<App/>}>
                         <Route path={`/`} element={<Home/>}/>
                         <Route path={`/about`} element={<div>About</div>}/>
