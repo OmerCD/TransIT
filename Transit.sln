@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transit.AppHost", "Transit.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transit.ServiceDefaults", "Transit.ServiceDefaults\Transit.ServiceDefaults.csproj", "{97B66A02-6DB2-477F-BADC-4C924631E753}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "transit.client", "transit.client\transit.client.esproj", "{136232B2-2359-4E24-8C79-39A2E2253499}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,12 +27,6 @@ Global
 		{97B66A02-6DB2-477F-BADC-4C924631E753}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97B66A02-6DB2-477F-BADC-4C924631E753}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97B66A02-6DB2-477F-BADC-4C924631E753}.Release|Any CPU.Build.0 = Release|Any CPU
-		{136232B2-2359-4E24-8C79-39A2E2253499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{136232B2-2359-4E24-8C79-39A2E2253499}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{136232B2-2359-4E24-8C79-39A2E2253499}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{136232B2-2359-4E24-8C79-39A2E2253499}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{136232B2-2359-4E24-8C79-39A2E2253499}.Release|Any CPU.Build.0 = Release|Any CPU
-		{136232B2-2359-4E24-8C79-39A2E2253499}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
