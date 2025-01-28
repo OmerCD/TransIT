@@ -3,17 +3,17 @@ import {RegisterResponseModel} from "../../models/register-response-model";
 import {AuthError, CheckAuthError, useAuthService} from "../../services/AuthService";
 import {LoginResponseModel} from "../../models/login-response-model";
 import StorageService from "../../services/StorageService";
+import {RegisterRequestModel} from "../../models/register-request-model";
 
 interface AuthProps {
     authState?: { token: string | null; authenticated: boolean | null };
-    onRegister?: (email: string, password: string) => Promise<RegisterResponseModel | AuthError>;
+    onRegister?: (registerModel: RegisterRequestModel) => Promise<RegisterResponseModel | AuthError>;
     onLogin?: (email: string, password: string) => Promise<LoginResponseModel | AuthError>;
     onLogout?: () => Promise<void>;
 }
 
 
 const TokenKey = "my-jwt";
-export const ApiUrl = `http://localhost:5157/api`;
 const AuthContext = createContext<AuthProps>({});
 
 export const useAuth = () => {
@@ -46,16 +46,8 @@ export const AuthProvider = ({children}: { children?: ReactNode }) => {
         loadToken();
     }, []);
 
-    const register = async (email: string, password: string) => {
-        const result = await authService.register({
-            email,
-            password,
-            confirmPassword: password,
-            firstName: "test",
-            lastName: "test",
-            username: email
-        });
-        
+    const register = async (registerModel: RegisterRequestModel) => {
+        const result = await authService.register(registerModel);
         if (CheckAuthError(result)) {
             return result as AuthError;
         }

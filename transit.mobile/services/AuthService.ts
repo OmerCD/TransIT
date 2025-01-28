@@ -13,12 +13,24 @@ export interface AuthError {
 
 export class AuthService extends ApiService {
     createAuthAxiosClient(): AxiosInstance {
-        return axios.create({
+        const newAxiosClient = axios.create({
             baseURL: this.baseUrl + `/authentication`,
             headers: {
                 'Content-Type': 'application/json',
             },
         });
+        
+        newAxiosClient.interceptors.response.use(
+            response => response,
+            error => {
+                if (error.response?.status === 400){
+                    const errorMessage = error.response.data as BadRequestResponseModel;
+                    alert(errorMessage.errors[0]);
+                }
+            }
+        );
+        
+        return newAxiosClient;
     }
 
     async login(username: string, password: string): Promise<LoginResponseModel | AuthError> {

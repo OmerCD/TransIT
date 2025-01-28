@@ -1,4 +1,5 @@
 import axios, {AxiosInstance} from "axios";
+import {BadRequestResponseModel} from "../models/bad-request-response-model";
 
 export class ApiService {
     protected baseUrl: string;
@@ -12,5 +13,15 @@ export class ApiService {
                 'Content-Type': 'application/json',
             },
         });
+        
+        this.axiosClient.interceptors.response.use(
+            response => response,
+            error => {
+                if (error.response?.status === 400){
+                    const errorMessage = error.response.data as BadRequestResponseModel;
+                    alert(errorMessage.errors[0]);
+                }
+            }
+        );
     }
 }
