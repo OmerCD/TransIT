@@ -1,9 +1,9 @@
-﻿import {Button, Image, StyleSheet, Text, TextInput, View} from "react-native";
+﻿import {Button, Image, StyleSheet, TextInput, View} from "react-native";
 import {useState} from "react";
 import {Colors} from "../constants/style-constants";
-import {AuthError, CheckAuthError} from "../../services/AuthService";
+import {CheckAuthError} from "../../services/AuthService";
 import {useAuth} from "../context/AuthContext";
-import {useNavigation} from "@react-navigation/native";
+import {useTransitNavigation} from "../hooks/TransitNavigation";
 
 class RegisterUserInfo {
     username: string = "DeepNightBlueSky";
@@ -17,7 +17,7 @@ class RegisterUserInfo {
 const Register = () => {
     const [userInfo, setUserInfo] = useState<RegisterUserInfo>(new RegisterUserInfo());
     const {onRegister} = useAuth();
-    const navigation = useNavigation();
+    const navigation = useTransitNavigation();
 
     async function register() {
         const result = await onRegister!(userInfo);

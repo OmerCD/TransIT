@@ -1,26 +1,18 @@
 ﻿import {Button, Image, StyleSheet, Text, TextInput, View} from "react-native";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useAuth} from "../context/AuthContext";
-import {AuthError, CheckAuthError, useAuthService} from "../../services/AuthService";
+import {AuthError, CheckAuthError} from "../../services/AuthService";
 import {Colors} from "../constants/style-constants";
-import {useNavigation} from "@react-navigation/native";
+import {useTransitNavigation} from "../hooks/TransitNavigation";
 
 const Login = () => {
     const [email, setEmail] = useState("omercd@hotmail.com.tr");
     const [password, setPassword] = useState("123456");
-    const {onLogin, onRegister} = useAuth();
-    const navigation = useNavigation();
+    const {onLogin} = useAuth();
+    const navigation = useTransitNavigation();
 
     const login = async () => {
         const result = await onLogin!(email, password);
-        if (result && CheckAuthError(result)) {
-            const authError = result as AuthError;
-            alert(authError.msg);
-        }
-    }
-
-    const register = async () => {
-        const result = await onRegister!(email, password);
         if (result && CheckAuthError(result)) {
             const authError = result as AuthError;
             alert(authError.msg);

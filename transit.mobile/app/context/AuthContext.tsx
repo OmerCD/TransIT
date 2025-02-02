@@ -33,7 +33,6 @@ export const AuthProvider = ({children}: { children?: ReactNode }) => {
         const loadToken = async () => {
             const token = await storageService.getItem(TokenKey);
             if (token){
-                console.log(`stored token: ${token}`);
                 authService.setToken(token);
                 
                 setAuthState({

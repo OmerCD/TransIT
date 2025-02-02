@@ -1,26 +1,23 @@
 ﻿import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {useAuth} from "./app/context/AuthContext";
 import {NavigationContainer, DefaultTheme} from "@react-navigation/native";
-import Home from "./app/screens/Home";
-import {Button} from "react-native";
 import Login from "./app/screens/Login";
 import {Colors} from "./app/constants/style-constants";
 import Register from "./app/screens/Register";
+import Main from "./app/screens/Main";
 
 const Stack = createNativeStackNavigator();
 
 export const Layout = () => {
-    const {authState, onLogout} = useAuth();
+    const {authState} = useAuth();
     return (
         <NavigationContainer theme={darkTheme}>
             <Stack.Navigator>
                 {authState?.authenticated ? (
-                    <Stack.Screen name={`Ana Sayfa`}
-                                  component={Home}
+                    <Stack.Screen name={`Main`}
+                                  component={Main}
                                   options={{
-                                      headerRight: () => (
-                                          <Button onPress={onLogout} title="Çıkış Yap"/>
-                                      )
+                                      headerShown: false,
                                   }}
                     />
                 ) : (
